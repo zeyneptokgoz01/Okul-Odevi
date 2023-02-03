@@ -1,0 +1,134 @@
+wget: https http ftp ile dosya indirmek için kullanılır.
+ -O parametresiyle indiriceğiniz dosyanın ismini belirlersiniz.
+ -b background da çalıştır.
+ -t yüklenmemiş dosyanın kaç defa daha yüklemeyi denemesini söyler.  
+softlink: Sembolik yani dosyanın veya dizinin linkidir. 
+Dosyayı sildiğinizde softlink boşa çıkar. 
+Farklı dosyaları birbirine linkleyebilirsiniz.
+inode:index node olan dizin veya dosyaların indexleri, sıraları veya idleridir.
+softlinkte linkenen dosya ile inode ları farklı iken hardlinkte aynıdır.
+orijinal dosyanın yetkileri değişirse softlinkin değişmez, hardlinkin değişir.
+sadece orijinal dosyanın yerini gösterir içeriği kopyalıyamaz. hardlinkte aynı içeriğe sahiptir.
+hardlink: dosyanın kopyasıdır. 
+
+Bash tarafından oluşturulan veri akışları
+veri akışı: kaynaktan çıkışa veya çıkıştan kaynağa veri aktarma yeteneği sağlar.
+stdin(0): standart info yani metin
+stdout(1): metin çıktı, standart output ve bu çıktı stdout akışında depolanır.
+stderr(2): standart error, bir komut hatayla karşılaştıdığında çağırılır, stderr veri akışın da depolanır.
+
+0 ======> 1(output),2(hata)
+
+>
+>>
+2>
+help 
+man
+whoami
+chmod 
+ps ax,
+top: en yoğun cpu kullanan en üstte olucak şekilde işlemleri sıralar
+htop: top la aynı 
+more: sayfa şeklinde gösterir. enter la aşağı, space le diğer sayfa, b ile önceki sayfaya gider. e ile sayfadan çıkar
+	-d: sayfa altında yönerge gösterir.
+	+num
+ifconfig ağ arayüzlerinin yapılandırmalarını gösterir.
+	-a: kullanıbilecek tüm arayüzleri bağlı olmasa bile gösterir.
+dig: DNS ad sunucularını sorgulamak için kullanılır. açılımı domain information groper. DNS sorgulama işlemi yapılır. 
+	yapısı dig server name type, örn: dig ayse.com.tr +short (sadece ip adresi) 
+	dig @8.8.8.8 google.com, normalde bir dns sorgulaması yapıldığında yerel yapılandırma kullanılır ama ip adresi vererek belirli bir alan sunucusundan da sorgulama yapılır.
+ilk satır dig in versiyonu
+header bilgiyi aldığı sunucunun bilgilerini gösterir
+OPT PSEUDOSECTION ,EDNS eklenti sistemi for dns, flags, udp paket boyutu
+question section bu da answera giden input gibi bir şey google.com internet a yazıyor 
+answer section, google.com    194(TTL)     IN(internet)    A(address)      IP adresi 
+server, dns serverın adresi portu 
+msg size rcvd cevabın boyutu
+
+değişken tanımlama: let ile tanımlarız. örn: let x=10
+
+$home=$shell: /home/kali = ~
+$user, $hostname: bunlar global değişkenler, örneğin shell değişkenini çağırdığın zaman shell kabuğunun bulunduğu yeri gösteriyor.
+$uid:UID: user identifier, her linux kullanıcısı için olan bir numara.
+0 root kullanıcısı
+1-499 arası sistem kullanıcıları
+500den büyüklerde normal kullanıcılardır.
+
+ps: sistemde yürütülenleri gösterir.
+	a: herkesinkisi gösterir.
+	x: kontrol terminali olmayanları da göster
+	u: kimin yaptığını gösterir.
+
+sort: satırları alfabetik sıralar.
+	r: ters sıralar
+
+cat sınav?? : sınav ile başlayan sonunda 2 karakterli olan dosyaları yazdırır. tab a basıyorsun
+
+/etc/passwd Sistemde bulunan tüm kullanıcı hesapları hakkında bilgi içeren düz metin tabanlı bir veritabanıdır.
+/etc/shadow text tabanlı password dosyası
+$?,py, script oluşturma,
+pwd: print working directory, bulunduğun yeri söyler.
+tree: ağaç şeklinde altımdakileri gösterir.
+hostname
+
+security passwords min-length 10 : şifreniz en az 10 karakteri olması gerekir
+exec-timeout 1 10 (1 dk 10 saniye): ssh bağlantısında 1 10 saniye sonra kapanır 
+login block-for 40 attempts 3 within 60: 60 saniye içinde 3 defa denerse 40 saniye bekletiyorsun
+login on-failure log 3: 3 defa yanlış girişten sonra log kaydını al  
+login on-success log : başarılı girişlerin log kaydını al
+
+
+
+şifre yönetiminin en efektif yolu "LDAP" veya "RADIUS" doğrulama sunucularından faydalanarak bir onay mekanizma sistemi oluşturmaktır.
+şifrelere dikkat edilmeli.
+protokollere dair önlemler
+ Güvenlik Duvarı (Firewall) : Özel ağlar ile İnternet arasında her iki yönde de istenmeyen trafiği önlemek amacı ile kullanılan ağ cihazlarıdır.
+
+
+firewall: yerel ağ ve dış ağ arasındaki güvenlik kontrol yazılımları/cihazlarıdır.
+firewall ilk kurulduğunda bütün trafiği keser ve kimin nereye nasıl gittiğini öğrenir ve hangi geçişlerde parola doğrulaması yapması gerektiğini belirler, black ve white list oluşturur ve buna benzer kurallar konulur.
+firewall yazılımı nat sayesinde yerel ağdaki cihazların ip adreslerini gizleyerek tek bir ip ile dış ağlara erişimi sağlar.
+adres saklama ve adres yönlendirme işlemlerini yapabilir.
+
+vpn: Virtual private networks, 
+
+antivirus: yeni gelişen teknolojilerle birlikte önlem almadan bilgisayar kullanmak fazla da güvenli değil, viruslerin en çok yayıldığı servisler olan email http ftp trafikleriyle bile bilgisayara virus bulaştığından dolayı bilgisayarı dış saldırı, ataklardan korumak için antivirus kullanılır.
+
+IDS(saldırı tespit sistemleri): websitelerdeki trafiğin artmasıyla birlikte sayfalara yapılan saldırıları tespit etmek zorlaşmıştır ve bu sistem gelişmiştir.
+web filtreleme çözümleri(URL filtering): yasal olmayan sitelerden indirilen programların sistemlere sahte lisanslarla kurulmasını ve bunun gibi yasal olmayan yollarla siteye erişim sağlamasını engelleyen yazılımdır.
+Güçlü Tanılamma (strong authentication): iki metotla tanımlama yapar.
+
+
+hashleme
+echo -n "deneme" | md5sum
+sha256sum
+
+
+id: kullanıcıların uid lerini döndürür
+hostname: kullanıcı ismi değiştirme
+uname: operating system name and system hardware
+-a hepsi
+-s kernel name
+
+netstat: 
+
+ssh [username]@[IP address]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
